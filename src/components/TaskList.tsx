@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import '../styles/tasklist.scss'
 
@@ -15,6 +15,17 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
+    
+    if(newTaskTitle){
+      const [newTask,setNewTask]= useState<Task>({
+        id:Math.floor(Math.random() * 10000),
+        title:newTaskTitle,
+        isComplete:false
+      });
+      setTasks([...tasks,newTask]);
+    }
+   
+
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
   }
 
@@ -25,6 +36,11 @@ export function TaskList() {
   function handleRemoveTask(id: number) {
     // Remova uma task da listagem pelo ID
   }
+
+  useEffect(()=>{
+
+  },[newTaskTitle]);
+
 
   return (
     <section className="task-list container">
