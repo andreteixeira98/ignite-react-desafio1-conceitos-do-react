@@ -24,7 +24,7 @@ function TaskList() {
         title:newTaskTitle,
         isComplete: false
       }
-      setTasks(oldState =>[newtask,...oldState]);
+      setTasks(oldState =>[...oldState, newtask]);
       setNewTaskTitle('');
       
     }
